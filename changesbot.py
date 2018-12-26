@@ -344,6 +344,16 @@ def DEMONSLISTREFRESH():
         if datasettings(file="changesdata.txt",method="get",line=getlatest("changesdata.txt")) != str(DEMONSLIST):
             datasettings(file="changesdata.txt",method="add",newkey=formattoday(),newvalue=str(DEMONSLIST))
 
+SCDIR = datasettings(file="changesv.txt",method="get",line="PDD")
+
+def linkedplayer(uid):
+    uid = str(uid)
+    if alldatakeys(SCDIR) != []:
+        for lp in alldatakeys(SCDIR):
+            if lp == uid: return datasettings(file=SCDIR,method="get",line=lp)
+    return None
+
+
 def inallowedguild(g,m):
     # 0=No Admin needed,1=Admin needed
     allowedguilds = [[162862229065039872,0],[395654171422097420,1],[503422247927808010,1]]
